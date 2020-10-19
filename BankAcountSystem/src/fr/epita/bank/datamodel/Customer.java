@@ -1,8 +1,15 @@
 package fr.epita.bank.datamodel;
 
 public class Customer {
+	
+	
 	private String name;
 	private String address;
+	
+	private SavingsAccount savingsAccount;
+	private InvestmentAccount investmentAccount;
+	
+	
 	public String getName() {
 		return name;
 	}
