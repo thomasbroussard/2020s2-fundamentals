@@ -1,27 +1,32 @@
 package fr.epita.geometry.datamodel;
 
-public class Square {
+public class Square implements Shape{
 	
-	private double side;
-
+	private Rectangle rectangle;
+	
 	public Square(double i) {
-		this.side = i;
+		this.rectangle = new Rectangle(i, i);
 	}
 
 	public double getSide() {
-		return side;
+		return this.rectangle.getWidth();
 	}
 
 	public void setSide(double side) {
-		this.side = side;
+		this.rectangle.setHeight(side);
+		this.rectangle.setWidth(side);
 	}
-	
-	public double calculatePerimeter() {
-		return this.side * 4;
-	}
-	
+
+	@Override
 	public double calculateArea() {
-		return this.side * this.side;
+		return this.rectangle.calculateArea();
 	}
+
+	@Override
+	public double calculatePerimeter() {
+		return this.rectangle.calculatePerimeter();
+	}
+	
+	
 
 }
