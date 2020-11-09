@@ -10,5 +10,7 @@ public class IamLog {
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS");
 		String dateAsString = LocalDateTime.now().format(formatter);
 		System.out.println(dateAsString + "---" + message); 
+		
+		
 	}
 }
