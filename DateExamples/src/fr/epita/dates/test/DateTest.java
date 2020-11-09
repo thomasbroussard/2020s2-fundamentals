@@ -6,7 +6,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class DateTest {
-	public static void main(String[] args) throws ParseException {
+	public static void main(String[] args)  {
 		Date date = new Date();
 		System.out.println(date);
 		
@@ -18,7 +18,15 @@ public class DateTest {
 		SimpleDateFormat onlyDateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		
 		String dateAsString = "2020-11-09";
-		Date convertedDate = onlyDateFormat.parse(dateAsString);
+		Date convertedDate = null;
+		try {
+			convertedDate = onlyDateFormat.parse(dateAsString);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			
+		}
 		System.out.println(convertedDate);
 		
 		Calendar calendar = Calendar.getInstance();
