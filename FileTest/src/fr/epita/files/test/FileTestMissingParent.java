@@ -23,6 +23,9 @@ public class FileTestMissingParent {
 		file.createNewFile();
 		
 		System.out.println("file exists : " + file.exists());
+		
+		File workingDirectory = new File(".");
+		System.out.println("working in :" + workingDirectory.getAbsolutePath());
 	}
 
 }

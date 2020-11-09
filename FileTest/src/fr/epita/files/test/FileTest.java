@@ -14,8 +14,10 @@ public class FileTest {
 		if (!fileExists) {
 			file.createNewFile();
 		}
-		FileWriter fileWriter = new FileWriter(file);
-		fileWriter.append("this is a test");
+		FileWriter fileWriter = new FileWriter(file, true);
+		String lineSep = System.getProperty("line.separator");
+		fileWriter.append("this is a test" + lineSep);
+		
 		fileWriter.close();
 		
 	}
