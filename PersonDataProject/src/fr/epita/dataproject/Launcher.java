@@ -37,6 +37,27 @@ public class Launcher {
 		System.out.println(persons.size());
 		System.out.println(persons);
 
+		
+		List<Person> persons2 =from2dMatrix(to2dMatrix(persons));
+		
+		//persons2 and persons should be the same aside of the name
+		
+		
+	}
+	
+	
+	private static double[][] to2dMatrix(List<Person> persons) {
+		double[][] results = new double[18][4];
+		
+		
+		return results;
+	}
+	
+	private static List<Person> from2dMatrix(double[][] persons) {
+		List<Person> results = new ArrayList<Person>();
+		
+		return results;
+				
 	}
 
 }
