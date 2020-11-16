@@ -14,8 +14,8 @@ public class FileTest {
 		System.out.println(listOfLines);
 
 		for (String line : listOfLines) {
-			line.trim();// remove trailing and starting spaces
-			line.replaceAll("\"", ""); // remove double quotes from the whole string.
+			line = line.trim();// remove trailing and starting spaces
+			line = line.replaceAll("\"", ""); // remove double quotes from the whole string.
 			try {
 				Integer.valueOf(line);
 			} catch (NumberFormatException nfe) {
