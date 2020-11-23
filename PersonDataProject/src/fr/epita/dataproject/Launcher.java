@@ -8,6 +8,9 @@ import java.util.List;
 
 public class Launcher {
 
+	private static final int VALUE_FOR_FEMALE = 1;
+	private static final int VALUE_FOR_MALE = 0;
+
 	public static void main(String[] args) throws IOException {
 		File file = new File("data.csv");
 		// TODO read the lines from the file
@@ -42,22 +45,54 @@ public class Launcher {
 		
 		//persons2 and persons should be the same aside of the name
 		
-		
+		System.out.println(persons2);
 	}
 	
 	
 	private static double[][] to2dMatrix(List<Person> persons) {
-		double[][] results = new double[18][4];
-		
+		int size = persons.size();
+		double[][] results = new double[size][4];
+		for (int i = 0; i < size; i++) {
+			double[] ds = new double[4];
+			double encodedSex = -1;
+			Person currentPerson = persons.get(i);
+			String currentPersonSex = currentPerson.getSex();
+			if ("M".equals(currentPersonSex)) {
+				encodedSex = VALUE_FOR_MALE;
+			}else if ("F".equals(currentPersonSex)) {
+				encodedSex = VALUE_FOR_FEMALE;
+			}
+			ds[0]= encodedSex;
+			ds[1]= currentPerson.getAge();
+			ds[2]= currentPerson.getHeight();
+			ds[3]= currentPerson.getAge();
+			results[i] = ds;
+		}
 		
 		return results;
+	}
+	private static List<Person> from2dMatrix(double[][] matrix) {
+		List<Person> persons = new ArrayList<>();
+	
+		for (double[] ds : matrix) {
+			
+			
+			String decodedSex = "";
+			if (VALUE_FOR_MALE == ds[0]) {
+				decodedSex = "M";
+			}else if (VALUE_FOR_FEMALE == ds[0]) {
+				decodedSex = "F";
+			}
+			
+
+			Person currentPerson = new Person("", Double.valueOf(ds[1]).intValue(), 
+					Double.valueOf(ds[2]).intValue(), 
+					Double.valueOf(ds[3]).intValue(), 
+					decodedSex );
+			persons.add(currentPerson);
+		}
+		
+		return persons;
 	}
 	
-	private static List<Person> from2dMatrix(double[][] persons) {
-		List<Person> results = new ArrayList<Person>();
-		
-		return results;
-				
-	}
-
 }
