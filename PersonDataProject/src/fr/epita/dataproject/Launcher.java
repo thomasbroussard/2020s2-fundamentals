@@ -4,7 +4,12 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Launcher {
 
@@ -46,6 +51,52 @@ public class Launcher {
 		//persons2 and persons should be the same aside of the name
 		
 		System.out.println(persons2);
+		
+		Collections.sort(persons, new Comparator<Person>() {
+			
+			public int compare(Person p1, Person p2) {
+				return p1.getAge()-p2.getAge();
+			};
+		});
+		//
+		Collections.sort(persons, (p1,p2) -> p1.getAge()-p2.getAge());
+		List<int[]> countByAges = new ArrayList<>();
+		int[] currentCount = new int[2];
+		for (Person person : persons) {
+			if (currentCount[0] != 0 && currentCount[0] != person.getAge()) {
+				countByAges.add(currentCount);
+				currentCount = new int[2];
+				currentCount[0] = person.getAge();
+				currentCount[1] = 1;
+			}else {
+				currentCount[1]++;
+			}
+		}
+		
+		//same
+		Map<Integer, Integer> ageDistributionMap = new LinkedHashMap<>();
+		for (Person person : persons) {
+			Integer count = ageDistributionMap.get(person.getAge());
+			if (count == null) {
+				count = 1;
+			}else {
+				count++;
+			}
+			ageDistributionMap.put(person.getAge(), count);
+		}
+		
+		System.out.println(ageDistributionMap);
+		
+		persons
+			.stream()
+			.mapToInt(Person::getHeight);
+		
+		Map<Integer,Long> map = persons.stream()
+				.collect(Collectors.groupingBy(Person::getAge,Collectors.counting()));
+		System.out.println("age distribution");
+		System.out.println(map);
+		
+		
 	}
 	
 	
