@@ -10,6 +10,8 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.SortedMap;
+import java.util.TreeMap;
 import java.util.stream.Collectors;
 
 public class Launcher {
@@ -94,6 +96,11 @@ public class Launcher {
 		
 		Map<Integer,Long> map = persons.stream()
 				.collect(Collectors.groupingBy(Person::getAge,Collectors.counting()));
+		SortedMap<Integer, Long> sortedMap = new TreeMap<>();
+		sortedMap.putAll(map);
+		
+		System.out.println("sortedMap :"+ sortedMap);
+		
 		System.out.println("age distribution");
 		System.out.println(map);
 		
