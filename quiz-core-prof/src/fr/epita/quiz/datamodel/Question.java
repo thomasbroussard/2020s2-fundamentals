@@ -3,7 +3,7 @@ package fr.epita.quiz.datamodel;
 public class Question {
 	private int id;
 	private String question;
-	private int difficulty;
+	private Integer difficulty;
 	
 	public Question() {
 	
